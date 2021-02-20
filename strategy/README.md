@@ -68,6 +68,39 @@ There is no concept of class. A `struct` can have fields (data members). Interfa
 [Setter is NOT considered an idiomatic Go approach](https://softwareengineering.stackexchange.com/a/278830).
 In the code I have shown use of both a setter and a direct member access of a public field.
 
+## Output
 
+```
+*utils.MallardDuck
+I'm a real Mallard duck
+I am flying
+quack
+All ducks float, even decoys!
+
+*utils.Duck
+I'm a duck.
+I am flying
+quack
+All ducks float, even decoys!
+
+*utils.RubberDuck
+I'm a rubber duckie
+I can NOT fly
+squeak
+All ducks float, even decoys!
+
+*utils.DecoyDuck
+I'm a duck decoy
+I can NOT fly
+<< Silence >>
+All ducks float, even decoys!
+
+I'm a duck.
+utils.Duck{flyer:utils.Flyer(nil), Quacker:utils.Quacker(nil)}
+utils.Duck{flyer:utils.FlyNoWay{NoOfWings:0}, Quacker:utils.MuteQuack{}}
+<< Silence >>
+utils.Duck{flyer:utils.FlyNoWay{NoOfWings:2}, Quacker:utils.Speak{Speech:"Aw, phooey!"}}
+Aw, phooey!
+```
 
 
