@@ -4,12 +4,17 @@ import (
 	"fmt"
 )
 
+// RedHeadDuck : class
+type RedHeadDuck struct {
+	Duck
+}
+
 // NewRedheadDuck : constructor
 func NewRedheadDuck() IDuck {
-	return &Duck{flyer: FlyWithWings{}, quacker: Quack{}}
+	return &Duck{flyer: FlyWithWings{}, Quacker: Quack{}}
 }
 
 // Display :
-func (m *Duck) Display() {
-	fmt.Println("I'm a real Red Headed duck")
+func (m *RedHeadDuck) Display() {
+	fmt.Println("I'm a real Red Head duck")
 }

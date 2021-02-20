@@ -19,7 +19,7 @@ func (f FlyWithWings) fly() {
 
 // FlyNoWay : Class for not flying
 type FlyNoWay struct {
-	noOfWings int
+	NoOfWings int
 }
 
 func (f FlyNoWay) fly() {

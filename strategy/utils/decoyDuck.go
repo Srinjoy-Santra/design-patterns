@@ -11,7 +11,7 @@ type DecoyDuck struct {
 
 // NewDecoyDuck : constructor
 func NewDecoyDuck() IDuck {
-	return &DecoyDuck{Duck{flyer: FlyNoWay{}, quacker: MuteQuack{}}}
+	return &DecoyDuck{Duck{flyer: FlyNoWay{}, Quacker: MuteQuack{}}}
 }
 
 // Display :

@@ -25,6 +25,15 @@ func (s Squeak) quack() {
 	fmt.Println("squeak")
 }
 
+// Speak : Class for Speaking
+type Speak struct {
+	Speech string
+}
+
+func (m Speak) quack() {
+	fmt.Println(m.Speech)
+}
+
 // MuteQuack : Class for not Quacking
 type MuteQuack struct {
 }

@@ -11,7 +11,7 @@ type MallardDuck struct {
 
 // NewMallardDuck : constructor
 func NewMallardDuck() IDuck {
-	return &MallardDuck{Duck{flyer: FlyWithWings{}, quacker: Quack{}}}
+	return &MallardDuck{Duck{flyer: FlyWithWings{}, Quacker: Quack{}}}
 }
 
 // Display :

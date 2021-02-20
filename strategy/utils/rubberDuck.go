@@ -11,7 +11,7 @@ type RubberDuck struct {
 
 // NewRubberDuck : constructor
 func NewRubberDuck() IDuck {
-	return &RubberDuck{Duck{flyer: FlyNoWay{}, quacker: Squeak{}}}
+	return &RubberDuck{Duck{flyer: FlyNoWay{}, Quacker: Squeak{}}}
 }
 
 // Display :

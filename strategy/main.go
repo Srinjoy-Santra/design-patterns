@@ -6,6 +6,7 @@ import (
 )
 
 func main() {
+
 	mallardDuck := utils.NewMallardDuck()
 	redheadDuck := utils.NewRedheadDuck()
 	rubberDuck := utils.NewRubberDuck()
@@ -20,5 +21,21 @@ func main() {
 		duck.PerformQuack()
 		duck.Swim()
 	}
+
+	donaldDuck := utils.Duck{}
+	donaldDuck.Display()
+	fmt.Printf("%#v\n", donaldDuck)
+
+	donaldDuck.SetFlyer(utils.FlyNoWay{})
+	donaldDuck.Quacker = utils.MuteQuack{}
+	fmt.Printf("%#v\n", donaldDuck)
+	donaldDuck.PerformQuack()
+
+	fly := utils.FlyNoWay{NoOfWings: 2}         // I don't remember seeing him fly, despite having 2 wings.
+	speak := utils.Speak{Speech: "Aw, phooey!"} // One of his catch phrases
+	donaldDuck.SetFlyer(fly)
+	donaldDuck.Quacker = speak
+	fmt.Printf("%#v\n", donaldDuck)
+	donaldDuck.PerformQuack()
 
 }
