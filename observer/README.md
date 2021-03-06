@@ -29,8 +29,8 @@ We are told to design a weather monitoring application. It consists of 3 section
 
 ![Class Diagram](https://i.stack.imgur.com/BxXQU.png)
 In the code, few renaming has taken place.
-CurrentConditions -> CurrCondDisplay
-StatisticsDisplay -> StatDisplay
+- CurrentConditions -> CurrCondDisplay
+- StatisticsDisplay -> StatDisplay
 
 ## Takeaways
 
