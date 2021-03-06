@@ -31,6 +31,7 @@ func (sd *StatDisplay) update(temp float32, humidity float32, pressure float32) 
 		sd.minTemp = temp
 	}
 
+	// Another way of achieving multiple inheritance
 	var d Displayer = sd
 	d.display()
 }

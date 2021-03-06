@@ -8,7 +8,6 @@ import (
 type CurrCondDisplay struct {
 	temperature float32
 	humidity    float32
-	//weatherData WeatherData
 }
 
 // NewCurrCondDisplay : Constructor

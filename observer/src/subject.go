@@ -65,6 +65,6 @@ func search(obs *[]Observer, key Observer) int {
 			return id
 		}
 	}
-	// Case of finding non-exisiting observer very rare
+	// Case of finding non-existing observer, very rare
 	return -1
 }
