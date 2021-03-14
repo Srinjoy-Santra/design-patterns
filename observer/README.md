@@ -28,6 +28,7 @@ We are told to design a weather monitoring application. It consists of 3 section
 ## UML Class Diagram
 
 ![Class Diagram](https://i.stack.imgur.com/BxXQU.png)
+
 In the code, few renaming has taken place.
 - CurrentConditions -> CurrCondDisplay
 - StatisticsDisplay -> StatDisplay
@@ -56,7 +57,7 @@ type displayerObserver interface {
 	Observer
 }
 ```
-2. Type assetion of structs.
+2. Type assertion of structs.
 ```
 ...
 func (sd *StatDisplay) update(temp float32, humidity float32, pressure float32) {
