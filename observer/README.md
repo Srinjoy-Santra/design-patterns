@@ -1,4 +1,4 @@
-## Strategy Pattern
+# Strategy Pattern
 
 This is the second chapter of "Head First Design Patterns" book.
 
