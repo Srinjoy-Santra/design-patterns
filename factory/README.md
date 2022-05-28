@@ -10,7 +10,7 @@ This is the fourth chapter of "Head First Design Patterns" book.
 - 
 ## UML Class Diagram
 
-```
+```mermaid
 classDiagram
       BiryaniStore <|-- KolkataBiryaniStore
       BiryaniStore <|-- HyderabadBiryaniStore
