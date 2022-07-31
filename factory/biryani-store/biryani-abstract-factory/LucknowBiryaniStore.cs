@@ -4,56 +4,70 @@ public class LucknowBiryaniStore : BiryaniStore
 {
     protected override Biryani? CreateBiryani(BiryaniTypes type)
     {
-        switch (type)
+        var ingredientFactory = new LucknowIngredientFactory();
+        return type switch
         {
-            case BiryaniTypes.VEGETARIAN:
-                return new LucknowStyleVegetarianBiryani();
-            case BiryaniTypes.CHICKEN:
-                return new LucknowStyleChickenBiryani();
-            case BiryaniTypes.MUTTON:
-                return new LucknowStyleMuttonBiryani();
-            default:
-                return null;
+            BiryaniTypes.VEGETARIAN => new LucknowStyleVegetarianBiryani(ingredientFactory),
+            BiryaniTypes.CHICKEN => new LucknowStyleChickenBiryani(ingredientFactory),
+            BiryaniTypes.MUTTON => new LucknowStyleMuttonBiryani(ingredientFactory),
+            _ => null
+        };
+    }
+
+    public class LucknowStyleMuttonBiryani : Biryani
+    {
+        private readonly BiryaniIngredientFactory _ingredientFactory;
+
+        public LucknowStyleMuttonBiryani(BiryaniIngredientFactory ingredientFactory)
+        {
+            _ingredientFactory = ingredientFactory;
+            Name="Lucknow Style Mutton Biryani";
+        }
+
+        public override void Prepare()
+        {
+            _rice = _ingredientFactory.CreateRice();
+            _mutton = _ingredientFactory.CreateMutton();
+            _additives = _ingredientFactory.CreateAdditives();
+            ToString(_mutton.toString());
         }
     }
-    
-}
 
-public class LucknowStyleMuttonBiryani : Biryani
-{
-    public LucknowStyleMuttonBiryani()
+    public class LucknowStyleChickenBiryani : Biryani
     {
-        Name = "Lucknow Style Mutton Biryani";
-        Rice = "Basmati";
-        Item = "Mutton";
-        Ingredients.Add("Saffron");
-        Ingredients.Add("Star Anise");
-        Ingredients.Add("Cinnamon");
+        private readonly BiryaniIngredientFactory _ingredientFactory;
+
+        public LucknowStyleChickenBiryani(BiryaniIngredientFactory ingredientFactory)
+        {
+            _ingredientFactory = ingredientFactory;
+            Name="Lucknow Style Chicken Biryani";
+        }
+
+        public override void Prepare()
+        {
+            _rice = _ingredientFactory.CreateRice();
+            _chicken = _ingredientFactory.CreateChicken();
+            _additives = _ingredientFactory.CreateAdditives();
+            ToString(_chicken.toString());
+        }
     }
-}
 
-public class LucknowStyleChickenBiryani : Biryani
-{
-    public LucknowStyleChickenBiryani()
+    public class LucknowStyleVegetarianBiryani : Biryani
     {
-        Name = "Lucknow Style Chicken Biryani";
-        Rice = "Basmati";
-        Item = "Chicken";
-        Ingredients.Add("Saffron");
-        Ingredients.Add("Star Anise");
-        Ingredients.Add("Cinnamon");
-    }
-}
+        private readonly BiryaniIngredientFactory _ingredientFactory;
 
-public class LucknowStyleVegetarianBiryani : Biryani
-{
-    public LucknowStyleVegetarianBiryani()
-    {
-        Name = "Lucknow Style Mutton Biryani";
-        Rice = "Basmati";
-        Item = "-";
-        Ingredients.Add("Saffron");
-        Ingredients.Add("Star Anise");
-        Ingredients.Add("Cinnamon");
+        public LucknowStyleVegetarianBiryani(BiryaniIngredientFactory ingredientFactory)
+        {
+            _ingredientFactory = ingredientFactory;
+            Name="Lucknow Style Vegetable Biryani";
+        }
+
+        public override void Prepare()
+        {
+            _rice = _ingredientFactory.CreateRice();
+            _vegetable = _ingredientFactory.CreateVegetable();
+            _additives = _ingredientFactory.CreateAdditives();
+            ToString(_vegetable.toString());
+        }
     }
 }

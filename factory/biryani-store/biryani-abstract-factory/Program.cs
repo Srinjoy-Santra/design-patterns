@@ -2,17 +2,15 @@
 
 using biryani_store;
 
-Console.WriteLine("Hello, World!");
-
 BiryaniStore kolkataStore = new KolkataBiryaniStore();
 BiryaniStore lucknowStore = new LucknowBiryaniStore();
 BiryaniStore hyderabadStore = new HyderabadBiryaniStore();
 
 Biryani? biryani = kolkataStore.OrderBiryani(BiryaniTypes.CHICKEN);
-Console.WriteLine("Srinjoy ordered a "+biryani?.Name);
+Console.WriteLine("Srinjoy received the order for a "+biryani?.Name);
 
 biryani = lucknowStore.OrderBiryani(BiryaniTypes.VEGETARIAN);
-Console.WriteLine("Rohit ordered a "+biryani?.Name);
+Console.WriteLine("Rohit received the order for a "+biryani?.Name);
 
 biryani = hyderabadStore.OrderBiryani(BiryaniTypes.MUTTON);
-Console.WriteLine("Ambar ordered a "+biryani?.Name);
+Console.WriteLine("Ambar received the order for a "+biryani?.Name);

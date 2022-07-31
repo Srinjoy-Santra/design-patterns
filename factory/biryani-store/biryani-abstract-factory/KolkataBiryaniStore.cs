@@ -6,58 +6,71 @@ public class KolkataBiryaniStore : BiryaniStore
 {
     protected override Biryani? CreateBiryani(BiryaniTypes type)
     {
-        switch (type)
+        var ingredientFactory = new KolkataIngredientFactory();
+        return type switch
         {
-            case VEGETARIAN:
-                return new KolkataStyleVegetarianBiryani();
-            case CHICKEN:
-                return new KolkataStyleChickenBiryani();
-            case MUTTON:
-                return new KolkataStyleMuttonBiryani();
-            default:
-                return null;
-        }
-    }
-}
-
-public class KolkataStyleMuttonBiryani : Biryani
-{
-    public KolkataStyleMuttonBiryani()
-    {
-        Name = "Kolkata Style Mutton Biryani";
-        Rice = "Basmati";
-        Item = "Mutton";
-        Ingredients.Add("Potato");
-        Ingredients.Add("Saffron");
-        Ingredients.Add("Nutmeg");
-        Ingredients.Add("Kewra");
-    }
-}
-
-public class KolkataStyleChickenBiryani : Biryani
-{
-    public KolkataStyleChickenBiryani()
-    {
-        Name = "Kolkata Style Chicken Biryani";
-        Rice = "Basmati";
-        Item = "Chicken";
-        Ingredients.Add("Potato");
-        Ingredients.Add("Saffron");
-        Ingredients.Add("Nutmeg");
-        Ingredients.Add("Kewra");
+            VEGETARIAN => new KolkataStyleVegetarianBiryani(ingredientFactory),
+            CHICKEN => new KolkataStyleChickenBiryani(ingredientFactory),
+            MUTTON => new KolkataStyleMuttonBiryani(ingredientFactory),
+            _ => null
+        };
     }
 }
 
 public class KolkataStyleVegetarianBiryani : Biryani
 {
-    public KolkataStyleVegetarianBiryani()
+    private BiryaniIngredientFactory _ingredientFactory;
+
+    public KolkataStyleVegetarianBiryani(BiryaniIngredientFactory ingredientFactory)
     {
-        Name = "Kolkata Style Mutton Biryani";
-        Rice = "Basmati";
-        Item = "-";
-        Ingredients.Add("Potato");
-        Ingredients.Add("Saffron");
-        Ingredients.Add("Nutmeg");
-        Ingredients.Add("Kewra");
+        _ingredientFactory = ingredientFactory; 
+        Name="Kolkata Style Vegetable Biryani";
+    }
+    
+    public override void Prepare()
+    {
+        _rice = _ingredientFactory.CreateRice();
+        _vegetable = _ingredientFactory.CreateVegetable();
+        _additives = _ingredientFactory.CreateAdditives();
+        ToString(_vegetable.toString());
+    }
+}
+
+public class KolkataStyleChickenBiryani : Biryani
+{
+    private BiryaniIngredientFactory _ingredientFactory;
+
+    public KolkataStyleChickenBiryani(BiryaniIngredientFactory ingredientFactory)
+    {
+        _ingredientFactory = ingredientFactory;
+        Name="Kolkata Style Chicken Biryani";
+    }
+    
+    public override void Prepare()
+    {
+        _rice = _ingredientFactory.CreateRice();
+        _chicken = _ingredientFactory.CreateChicken();
+        _additives = _ingredientFactory.CreateAdditives();
+        ToString(_chicken.toString());
+    }
+}
+
+
+public class KolkataStyleMuttonBiryani : Biryani
+{
+    private BiryaniIngredientFactory _ingredientFactory;
+
+    public KolkataStyleMuttonBiryani(BiryaniIngredientFactory ingredientFactory)
+    {
+        _ingredientFactory = ingredientFactory;
+        Name="Kolkata Style Mutton Biryani";
+    }
+    
+    public override void Prepare()
+    {
+        _rice = _ingredientFactory.CreateRice();
+        _mutton = _ingredientFactory.CreateMutton();
+        _additives = _ingredientFactory.CreateAdditives();
+        ToString(_mutton.toString());
     }
 }

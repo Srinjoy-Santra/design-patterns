@@ -5,55 +5,72 @@ public class HyderabadBiryaniStore : BiryaniStore
 {
     protected override Biryani? CreateBiryani(BiryaniTypes type)
     {
-        switch (type)
+        var ingredientFactory = new HyderabadIngredientFactory();
+        return type switch
         {
-            case VEGETARIAN:
-                return new HyderabadStyleVegetarianBiryani();
-            case CHICKEN:
-                return new HyderabadStyleChickenBiryani();
-            case MUTTON:
-                return new HyderabadStyleMuttonBiryani();
-            default:
-                return null;
-        }
+            VEGETARIAN => new HyderabadStyleVegetarianBiryani(ingredientFactory),
+            CHICKEN => new HyderabadStyleChickenBiryani(ingredientFactory),
+            MUTTON => new HyderabadStyleMuttonBiryani(ingredientFactory),
+            _ => null
+        };
     }
 }
 
 public class HyderabadStyleMuttonBiryani : Biryani
 {
-    public HyderabadStyleMuttonBiryani()
+    private BiryaniIngredientFactory _ingredientFactory;
+
+    public HyderabadStyleMuttonBiryani(BiryaniIngredientFactory ingredientFactory)
     {
-        Name = "Hyderabad Style Mutton Biryani";
-        Rice = "Basmati";
-        Item = "Mutton";
-        Ingredients.Add("Onions");
-        Ingredients.Add("Saffron");
-        Ingredients.Add("Dry Fruits");
+        _ingredientFactory = ingredientFactory;
+        Name="Hyderabad Style Mutton Biryani";
+    }
+    
+    public override void Prepare()
+    {
+        _rice = _ingredientFactory.CreateRice();
+        _mutton = _ingredientFactory.CreateMutton();
+        _additives = _ingredientFactory.CreateAdditives();
+        
+        ToString(_mutton.toString());
     }
 }
 
 public class HyderabadStyleChickenBiryani : Biryani
 {
-    public HyderabadStyleChickenBiryani()
+    private BiryaniIngredientFactory _ingredientFactory;
+
+    public HyderabadStyleChickenBiryani(BiryaniIngredientFactory ingredientFactory)
     {
-        Name = "Hyderabad Style Chicken Biryani";
-        Rice = "Basmati";
-        Item = "Chicken";
-        Ingredients.Add("Onions");
-        Ingredients.Add("Saffron");
-        Ingredients.Add("Dry Fruits");
+        _ingredientFactory = ingredientFactory;
+        Name="Hyderabad Style Chicken Biryani";
+    }
+    
+    public override void Prepare()
+    {
+        _rice = _ingredientFactory.CreateRice();
+        _chicken = _ingredientFactory.CreateChicken();
+        _additives = _ingredientFactory.CreateAdditives();
+
+        ToString(_chicken.toString());
     }
 }
-
+    
 public class HyderabadStyleVegetarianBiryani : Biryani
 {
-    public HyderabadStyleVegetarianBiryani()
+    private BiryaniIngredientFactory _ingredientFactory;
+
+    public HyderabadStyleVegetarianBiryani(BiryaniIngredientFactory ingredientFactory)
     {
-        Name = "Hyderabad Style Mutton Biryani";
-        Rice = "Basmati";
-        Item = "-";
-        Ingredients.Add("Onions");
-        Ingredients.Add("Saffron");
-        Ingredients.Add("Dry Fruits");
+        _ingredientFactory = ingredientFactory;
+        Name="Hyderabad Style Vegetable Biryani";
+    }
+    
+    public override void Prepare()
+    {
+        _rice = _ingredientFactory.CreateRice();
+        _vegetable = _ingredientFactory.CreateVegetable();
+        _additives = _ingredientFactory.CreateAdditives();
+        ToString(_vegetable.toString());
     }
 }
