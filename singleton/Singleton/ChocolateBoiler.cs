@@ -4,7 +4,12 @@ public class ChocolateBoiler
 {
     private bool _isEmpty;
     private bool _isBoiled;
-    private static ChocolateBoiler _uniqueInstance;
+    private static readonly ChocolateBoiler _uniqueInstance = new();
+    
+    // Explicit static constructor to tell C# compiler not to mark type as beforefieldinit
+    static ChocolateBoiler()
+    {
+    }
     
     private ChocolateBoiler()
     {
@@ -12,13 +17,7 @@ public class ChocolateBoiler
         _isBoiled = false;
     }
 
-    public static ChocolateBoiler Instance
-    {
-        get
-        {
-            return _uniqueInstance ??= new ChocolateBoiler();
-        }
-    }
+    public static ChocolateBoiler Instance => _uniqueInstance;
 
     public void Fill()
     {
