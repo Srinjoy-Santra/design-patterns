@@ -10,7 +10,7 @@ This repository contains code to implement the various examples mentioned in [He
 |  4  | [Factory](/factory) | ✅ | Creational | [Medium](https://srinjoysantra.medium.com/factory-pattern-in-c-46c8beff0a0f) |
 |  5  | Singleton | 🚧 | Creational | |
 |  6  | Command | ⭕ | Creational | |
-|  7  | Adapter | ⭕ | Creational | |
+|  7  | [Adapter](/adapter/) | ⭕ | Creational | [Medium]() |
 |  7  | Facade | ⭕ | Structural | |
 |  8  | Template Method | ⭕ | Behavourial | |
 |  9  | Iterator | ⭕ | Behavourial | |
